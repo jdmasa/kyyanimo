@@ -24,100 +24,25 @@ class FieldGameTracker {
     }
     
     setupPWAInstall() {
-        // Check if PWA is already installed
-        if (window.matchMedia('(display-mode: standalone)').matches) {
-            console.log('PWA is already installed');
-            return;
-        }
-
-        // Check if browser supports PWA installation
-        if (!('serviceWorker' in navigator)) {
-            console.log('Service Worker not supported');
-            return;
-        }
-
         // Listen for the beforeinstallprompt event
         window.addEventListener('beforeinstallprompt', (e) => {
-            console.log('PWA install prompt available');
+            console.log('beforeinstallprompt event fired');
             e.preventDefault();
             this.deferredPrompt = e;
-            this.showInstallPrompt();
-        });
-
-        // For debugging - show install prompt after a delay if not triggered
-        setTimeout(() => {
-            if (!this.deferredPrompt) {
-                console.log('No install prompt available. Checking requirements...');
-                this.checkPWARequirements();
-            }
-        }, 3000);
-
-        // Handle install button click
-        document.getElementById('install-button').addEventListener('click', () => {
-            this.installApp();
-        });
-
-        // Handle dismiss button click
-        document.getElementById('dismiss-install').addEventListener('click', () => {
-            this.hideInstallPrompt();
+            // Don't show custom prompt, let browser handle it naturally
         });
 
         // Listen for app installed event
         window.addEventListener('appinstalled', () => {
             console.log('PWA was installed');
-            this.hideInstallPrompt();
         });
-    }
-
-    checkPWARequirements() {
-        console.log('Checking PWA requirements:');
+        
+        // Debug PWA requirements
+        console.log('PWA Requirements Check:');
         console.log('- HTTPS:', location.protocol === 'https:' || location.hostname === 'localhost');
-        console.log('- Service Worker:', 'serviceWorker' in navigator);
-        console.log('- Manifest:', document.querySelector('link[rel="manifest"]') !== null);
-        console.log('- Not already installed:', !window.matchMedia('(display-mode: standalone)').matches);
-        
-        // Show manual install instructions
-        if (!this.deferredPrompt) {
-            this.showManualInstallInstructions();
-        }
-    }
-
-    showManualInstallInstructions() {
-        const installPrompt = document.getElementById('install-prompt');
-        const installButton = document.getElementById('install-button');
-        const promptText = installPrompt.querySelector('p');
-        
-        promptText.innerHTML = '📱 To install this app:<br>• Chrome/Brave: Menu → "Install app"<br>• Safari: Share → "Add to Home Screen"';
-        installButton.style.display = 'none';
-        installPrompt.classList.remove('hidden');
-    }
-
-    showInstallPrompt() {
-        const installPrompt = document.getElementById('install-prompt');
-        const installButton = document.getElementById('install-button');
-        const promptText = installPrompt.querySelector('p');
-        
-        promptText.textContent = '📱 Install this app for the best experience!';
-        installButton.style.display = 'inline-block';
-        installPrompt.classList.remove('hidden');
-    }
-
-    hideInstallPrompt() {
-        const installPrompt = document.getElementById('install-prompt');
-        installPrompt.classList.add('hidden');
-    }
-
-    async installApp() {
-        if (!this.deferredPrompt) {
-            alert('Install not available. Try accessing this page in Chrome or Safari.');
-            return;
-        }
-
-        const result = await this.deferredPrompt.prompt();
-        console.log('Install prompt result:', result);
-        
-        this.deferredPrompt = null;
-        this.hideInstallPrompt();
+        console.log('- Service Worker supported:', 'serviceWorker' in navigator);
+        console.log('- Manifest linked:', !!document.querySelector('link[rel="manifest"]'));
+        console.log('- Already installed:', window.matchMedia('(display-mode: standalone)').matches);
     }
 
     initializeEventListeners() {

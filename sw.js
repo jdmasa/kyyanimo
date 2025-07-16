@@ -1,11 +1,10 @@
-const CACHE_NAME = 'kyyanimo-v2';
+const CACHE_NAME = 'kyyanimo-v3';
 const urlsToCache = [
   '/',
   '/index.html',
   '/style.css',
   '/script.js',
-  '/manifest.json',
-  'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%234facfe\'/%3E%3Ctext x=\'50\' y=\'65\' font-size=\'40\' text-anchor=\'middle\' fill=\'white\'%3E🎯%3C/text%3E%3C/svg%3E'
+  '/manifest.json'
 ];
 
 // Install event - cache resources
