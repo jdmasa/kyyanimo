@@ -79,6 +79,13 @@ class FieldGameTracker {
             return;
         }
         
+        // Hide the header when starting the game
+        const header = document.querySelector('header');
+        if (header) {
+            header.classList.add('hidden');
+            header.style.display = 'none';
+        }
+        
         this.gameStarted = true;
         this.currentPlayerIndex = 0;
         this.createAnimalGrid();
@@ -178,19 +185,15 @@ class FieldGameTracker {
     }
     
     resetGame() {
-        // Explicitly hide the modal first
+        // Hide the modal first
         const modal = document.getElementById('winner-modal');
         modal.classList.add('hidden');
         
-        // Debug and hide the header after starting new game
+        // Show the header again when resetting
         const header = document.querySelector('header');
-        console.log('Header element found:', header);
         if (header) {
-            console.log('Adding hidden class to header');
-            header.classList.add('hidden');
-            console.log('Header classes after adding hidden:', header.classList.toString());
-            // Also try setting display none directly as backup
-            header.style.display = 'none';
+            header.classList.remove('hidden');
+            header.style.display = '';
         }
         
         this.players = [];
