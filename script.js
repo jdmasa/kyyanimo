@@ -182,6 +182,10 @@ class FieldGameTracker {
         const modal = document.getElementById('winner-modal');
         modal.classList.add('hidden');
         
+        // Hide the header after starting new game
+        const header = document.querySelector('header');
+        header.classList.add('hidden');
+        
         this.players = [];
         this.currentPlayerIndex = 0;
         this.gameStarted = false;
