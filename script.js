@@ -182,10 +182,15 @@ class FieldGameTracker {
         const modal = document.getElementById('winner-modal');
         modal.classList.add('hidden');
         
-        // Hide the header after starting new game
+        // Debug and hide the header after starting new game
         const header = document.querySelector('header');
+        console.log('Header element found:', header);
         if (header) {
+            console.log('Adding hidden class to header');
             header.classList.add('hidden');
+            console.log('Header classes after adding hidden:', header.classList.toString());
+            // Also try setting display none directly as backup
+            header.style.display = 'none';
         }
         
         this.players = [];
