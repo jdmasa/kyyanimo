@@ -184,7 +184,9 @@ class FieldGameTracker {
         
         // Hide the header after starting new game
         const header = document.querySelector('header');
-        header.classList.add('hidden');
+        if (header) {
+            header.classList.add('hidden');
+        }
         
         this.players = [];
         this.currentPlayerIndex = 0;

@@ -46,6 +46,10 @@ header p {
     display: none;
 }
 
+header.hidden {
+    display: none !important;
+}
+
 /* Player Setup */
 .player-input {
     display: flex;
