@@ -6,8 +6,8 @@
   "display": "standalone",
   "background_color": "#667eea",
   "theme_color": "#4facfe",
-  "scope": "/",
-  "id": "/",
+  "scope": "/kyyanimo/",
+  "id": "/kyyanimo/",
   "icons": [
     {
       "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%234facfe'/%3E%3Ctext x='50' y='65' font-size='40' text-anchor='middle' fill='white'%3E🎯%3C/text%3E%3C/svg%3E",
