@@ -2,7 +2,7 @@
   "name": "KyyÄnimo Score Tracker",
   "short_name": "KyyÄnimo",
   "description": "Hit the animal sticks to clear your scoresheet and win!",
-  "start_url": "/",
+  "start_url": "",
   "display": "standalone",
   "background_color": "#667eea",
   "theme_color": "#4facfe",
