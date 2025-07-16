@@ -5,6 +5,7 @@ class FieldGameTracker {
         this.gameStarted = false;
         this.selectedAnimals = new Set();
         this.roundConfirmed = false;
+        this.deferredPrompt = null;
         
         this.animals = [
             { name: 'Penguin', emoji: '🐧' },
@@ -19,8 +20,58 @@ class FieldGameTracker {
         
         this.initializeEventListeners();
         this.updateUI();
+        this.setupPWAInstall();
     }
     
+    setupPWAInstall() {
+        // Listen for the beforeinstallprompt event
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('PWA install prompt available');
+            e.preventDefault();
+            this.deferredPrompt = e;
+            this.showInstallPrompt();
+        });
+
+        // Handle install button click
+        document.getElementById('install-button').addEventListener('click', () => {
+            this.installApp();
+        });
+
+        // Handle dismiss button click
+        document.getElementById('dismiss-install').addEventListener('click', () => {
+            this.hideInstallPrompt();
+        });
+
+        // Listen for app installed event
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA was installed');
+            this.hideInstallPrompt();
+        });
+    }
+
+    showInstallPrompt() {
+        const installPrompt = document.getElementById('install-prompt');
+        installPrompt.classList.remove('hidden');
+    }
+
+    hideInstallPrompt() {
+        const installPrompt = document.getElementById('install-prompt');
+        installPrompt.classList.add('hidden');
+    }
+
+    async installApp() {
+        if (!this.deferredPrompt) {
+            alert('Install not available. Try accessing this page in Chrome or Safari.');
+            return;
+        }
+
+        const result = await this.deferredPrompt.prompt();
+        console.log('Install prompt result:', result);
+        
+        this.deferredPrompt = null;
+        this.hideInstallPrompt();
+    }
+
     initializeEventListeners() {
         // Player setup
         document.getElementById('player-name').addEventListener('keypress', (e) => {
