@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Game Score Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Field Game Score Tracker</h1>
+            <p>Hit the animal sticks to clear your scoresheet and win!</p>
+        </header>
+
+        <!-- Player Setup -->
+        <section id="setup-section" class="setup-section">
+            <h2>Player Setup</h2>
+            <div class="player-input">
+                <input type="text" id="player-name" placeholder="Enter player name" maxlength="20">
+                <button id="add-player">Add Player</button>
+            </div>
+            <div id="player-list" class="player-list"></div>
+            <button id="start-game" class="start-game" disabled>Start Game</button>
+        </section>
+
+        <!-- Game Section -->
+        <section id="game-section" class="game-section hidden">
+            <div class="current-player">
+                <h2>Current Player: <span id="current-player-name"></span></h2>
+                <div class="player-progress">
+                    <span id="current-player-score">0/8</span> animals hit
+                </div>
+            </div>
+
+            <div class="animal-selection">
+                <h3>Select Animals Hit This Round:</h3>
+                <div id="animal-grid" class="animal-grid"></div>
+                <div class="game-controls">
+                    <button id="confirm-round" disabled>Confirm Turn</button>
+                    <button id="next-player" disabled>Next Player</button>
+                </div>
+            </div>
+
+            <div class="scoreboard">
+                <h3>Scoreboard</h3>
+                <div id="score-sheets" class="score-sheets"></div>
+            </div>
+        </section>
+
+        <!-- Winner Modal -->
+        <div id="winner-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>🎉 Game Complete!</h2>
+                <p id="winner-message"></p>
+                <button id="new-game">Start New Game</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
