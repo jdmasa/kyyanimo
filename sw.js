@@ -1,10 +1,10 @@
 const CACHE_NAME = 'kyyanimo-v3';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/script.js',
-  '/manifest.json'
+
+  'index.html',
+  'style.css',
+  'script.js',
+  'manifest.json'
 ];
 
 // Install event - cache resources
