@@ -50,6 +50,49 @@ header.hidden {
     display: none !important;
 }
 
+/* Install Prompt */
+.install-prompt {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 2px solid #4facfe;
+}
+
+.install-prompt p {
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    color: #2d3436;
+}
+
+.install-prompt button {
+    margin: 0 5px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#install-button {
+    background: #4facfe;
+    color: white;
+}
+
+#install-button:hover {
+    background: #3a8bfe;
+}
+
+#dismiss-install {
+    background: #ddd;
+    color: #666;
+}
+
+#dismiss-install:hover {
+    background: #ccc;
+}
+
 /* Player Setup */
 .player-input {
     display: flex;
